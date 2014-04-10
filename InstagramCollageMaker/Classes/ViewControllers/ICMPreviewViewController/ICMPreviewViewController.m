@@ -30,6 +30,12 @@
     return self;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.previewView.image = self.collageImage;
+}
+
 #pragma mark - Actions
 
 - (void)onSendButtonTap:(id)sender {

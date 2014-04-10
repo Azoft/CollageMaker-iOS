@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D3A09357-A91D-4A61-90C8-1BFC1B0DB79A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>InstagramCollageMaker</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8C7F7BA3-20C9-417C-B58C-EF230A6BA590</key>
+		<string>http://git.azcltd.com/root/redmadrobot_ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>InstagramCollageMaker.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8C7F7BA3-20C9-417C-B58C-EF230A6BA590</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://git.azcltd.com/root/redmadrobot_ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8C7F7BA3-20C9-417C-B58C-EF230A6BA590</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8C7F7BA3-20C9-417C-B58C-EF230A6BA590</string>
+			<key>IDESourceControlWCCName</key>
+			<string>redmadrobot_ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

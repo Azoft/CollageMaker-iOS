@@ -124,7 +124,7 @@
 }
 
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value {
-    return option == iCarouselOptionSpacing ? value * 1.2 : value;
+    return option == iCarouselOptionSpacing ? value * 1.1 : value;
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {

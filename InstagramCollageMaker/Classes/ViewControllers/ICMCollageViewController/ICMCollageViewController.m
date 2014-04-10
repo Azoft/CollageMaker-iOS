@@ -132,14 +132,18 @@
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     }
     [photoImage imageWithCompletion:^(UIImage *image) {
-        [_currentCollageElementButton setImage:image forState:UIControlStateNormal];
-        [SVProgressHUD dismiss];
-        [_currentCollageElementButton setTitle:nil forState:UIControlStateNormal];
-        
-        NSArray *images = [[_collageView.subviews valueForKey:@"currentImage"] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject isKindOfClass:[UIImage class]];
-        }]];
-        self.navigationItem.rightBarButtonItem.enabled = [self.collage.relativeFrames count] == [images count];
+        if (image) {
+            [_currentCollageElementButton setImage:image forState:UIControlStateNormal];
+            [SVProgressHUD dismiss];
+            [_currentCollageElementButton setTitle:nil forState:UIControlStateNormal];
+            
+            NSArray *images = [[_collageView.subviews valueForKey:@"currentImage"] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+                return [evaluatedObject isKindOfClass:[UIImage class]];
+            }]];
+            self.navigationItem.rightBarButtonItem.enabled = [self.collage.relativeFrames count] == [images count];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"Не удалось загрузить фото"];
+        }
     }];
 }
 

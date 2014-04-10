@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>ratio</key>
+		<integer>1</integer>
+		<key>relativeFramesStrings</key>
+		<array>
+			<string>{{0.01, 0.01}, {0.98, 0.98}}</string>
+		</array>
+	</dict>
+	<dict>
+		<key>ratio</key>
+		<integer>1</integer>
+		<key>relativeFramesStrings</key>
+		<array>
+			<string>{{0.01, 0.01}, {0.48, 0.98}}</string>
+			<string>{{0.51, 0.01}, {0.48, 0.98}}</string>
+		</array>
+	</dict>
+	<dict>
+		<key>ratio</key>
+		<integer>1</integer>
+		<key>relativeFramesStrings</key>
+		<array>
+			<string>{{0.01, 0.01}, {0.48, 0.98}}</string>
+			<string>{{0.51, 0.01}, {0.48, 0.48}}</string>
+			<string>{{0.51, 0.51}, {0.48, 0.48}}</string>
+		</array>
+	</dict>
+	<dict>
+		<key>ratio</key>
+		<integer>1</integer>
+		<key>relativeFramesStrings</key>
+		<array>
+			<string>{{0.01, 0.01}, {0.48, 0.48}}</string>
+			<string>{{0.51, 0.01}, {0.48, 0.48}}</string>
+			<string>{{0.01, 0.51}, {0.48, 0.48}}</string>
+			<string>{{0.51, 0.51}, {0.48, 0.48}}</string>
+		</array>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vgl-SU-Amo">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="5ov-8P-IVw">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="vgl-SU-Amo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lTh-4M-gJA">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.13333334028720856" green="0.77647066116333008" blue="0.98823535442352295" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Erf-6Y-W9g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZW8-OT-wJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-256" y="49"/>
+        </scene>
+        <!--Collage View Controller-->
+        <scene sceneID="RL5-tA-aNd">
+            <objects>
+                <viewController storyboardIdentifier="ICMCollageViewController" id="Rky-qp-yce" customClass="ICMCollageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aCV-WU-aAM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.13333334028720856" green="0.77647066116333008" blue="0.98823535442352295" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cvg-kd-76V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-256" y="904"/>
+        </scene>
+        <!--Menu View Cotrnoller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ICMMenuViewCotrnoller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BAq-Vb-03I">
+                                <rect key="frame" x="65" y="424" width="190" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Давай коллаж">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.3223939324817518" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onGiveCollageButtonTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xKS-Ff-2Hc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I8h-Ys-DQf">
+                                <rect key="frame" x="38" y="91" width="244" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Ввести имя пользователя">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.32239393249999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BJf-q1-wbf" kind="modal" identifier="presentUserSearchNC" id="1X9-4V-goB"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" id="5rh-DM-o4r" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="208" width="320" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="56i-6J-bph"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="pzf-Lr-1jK"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите формат коллажа" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FT5-ni-5f5">
+                                <rect key="frame" x="37" y="164" width="246" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.77252509124087587" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GVP-sk-A8x"/>
+                    <connections>
+                        <outlet property="collagePreviewCarousel" destination="5rh-DM-o4r" id="Lrh-I7-JpF"/>
+                        <outlet property="giveCollageButton" destination="BAq-Vb-03I" id="lRE-Ck-s1a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="228" y="203"/>
+        </scene>
+        <!--User Search View Controller - Имя пользователя-->
+        <scene sceneID="vTK-fo-4ns">
+            <objects>
+                <tableViewController id="15G-9R-4ZR" customClass="ICMUserSearchViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KgJ-2e-WtM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="zSD-Tp-BYO">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="15G-9R-4ZR" id="Qsk-ap-c12"/>
+                            </connections>
+                        </searchBar>
+                        <connections>
+                            <outlet property="dataSource" destination="15G-9R-4ZR" id="k9F-at-bCF"/>
+                            <outlet property="delegate" destination="15G-9R-4ZR" id="sAW-Vi-lTt"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Имя пользователя" id="lGJ-VR-aGM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bbY-oX-Ivo">
+                            <connections>
+                                <action selector="onCancelButtonTap:" destination="15G-9R-4ZR" id="ceV-o6-4Pa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="zIC-4i-Psb" id="wNN-aT-OsO"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zWt-hK-BFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="zIC-4i-Psb">
+                    <connections>
+                        <outlet property="delegate" destination="15G-9R-4ZR" id="Ewx-x4-rOT"/>
+                        <outlet property="searchBar" destination="zSD-Tp-BYO" id="LHO-BQ-59t"/>
+                        <outlet property="searchContentsController" destination="15G-9R-4ZR" id="hAU-Vx-dlD"/>
+                        <outlet property="searchResultsDataSource" destination="15G-9R-4ZR" id="Voy-do-KLB"/>
+                        <outlet property="searchResultsDelegate" destination="15G-9R-4ZR" id="Ac5-xs-Dlr"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1071" y="49"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="p6V-hM-mAF">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="BJf-q1-wbf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ZH-3R-ToR">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="15G-9R-4ZR" kind="relationship" relationship="rootViewController" id="7F5-uG-gf3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rer-27-GTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="671" y="49"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

@@ -15,6 +15,8 @@
 		0413F81118F64AFB005CBA58 /* UIView+RelativeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413F80F18F64AFB005CBA58 /* UIView+RelativeFrame.m */; };
 		0413F81418F64B18005CBA58 /* UIImage+CollagePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413F81318F64B18005CBA58 /* UIImage+CollagePreview.m */; };
 		0413F81818F6608B005CBA58 /* ICMMenuViewCotrnoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413F81718F6608B005CBA58 /* ICMMenuViewCotrnoller.m */; };
+		0413F82218F6AE41005CBA58 /* ICMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413F82118F6AE41005CBA58 /* ICMBaseViewController.m */; };
+		0413F82518F6AECA005CBA58 /* ICMPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413F82418F6AECA005CBA58 /* ICMPreviewViewController.m */; };
 		04E56FC118F291B1001BB14E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E56FC018F291B1001BB14E /* Foundation.framework */; };
 		04E56FC318F291B1001BB14E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E56FC218F291B1001BB14E /* CoreGraphics.framework */; };
 		04E56FC518F291B1001BB14E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E56FC418F291B1001BB14E /* UIKit.framework */; };
@@ -62,6 +64,10 @@
 		0413F81318F64B18005CBA58 /* UIImage+CollagePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CollagePreview.m"; sourceTree = "<group>"; };
 		0413F81618F6608B005CBA58 /* ICMMenuViewCotrnoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMMenuViewCotrnoller.h; sourceTree = "<group>"; };
 		0413F81718F6608B005CBA58 /* ICMMenuViewCotrnoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMMenuViewCotrnoller.m; sourceTree = "<group>"; };
+		0413F82018F6AE41005CBA58 /* ICMBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMBaseViewController.h; sourceTree = "<group>"; };
+		0413F82118F6AE41005CBA58 /* ICMBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMBaseViewController.m; sourceTree = "<group>"; };
+		0413F82318F6AECA005CBA58 /* ICMPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMPreviewViewController.h; sourceTree = "<group>"; };
+		0413F82418F6AECA005CBA58 /* ICMPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMPreviewViewController.m; sourceTree = "<group>"; };
 		04E56FBD18F291B1001BB14E /* InstagramCollageMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramCollageMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E56FC018F291B1001BB14E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04E56FC218F291B1001BB14E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -164,6 +170,24 @@
 				0413F81718F6608B005CBA58 /* ICMMenuViewCotrnoller.m */,
 			);
 			path = ICMMenuViewCotrnoller;
+			sourceTree = "<group>";
+		};
+		0413F81E18F6AE30005CBA58 /* ICMBaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0413F82018F6AE41005CBA58 /* ICMBaseViewController.h */,
+				0413F82118F6AE41005CBA58 /* ICMBaseViewController.m */,
+			);
+			path = ICMBaseViewController;
+			sourceTree = "<group>";
+		};
+		0413F81F18F6AE30005CBA58 /* ICMPreviewViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0413F82318F6AECA005CBA58 /* ICMPreviewViewController.h */,
+				0413F82418F6AECA005CBA58 /* ICMPreviewViewController.m */,
+			);
+			path = ICMPreviewViewController;
 			sourceTree = "<group>";
 		};
 		04E56FB418F291B1001BB14E = {
@@ -280,6 +304,8 @@
 		04E56FFD18F293E6001BB14E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0413F81E18F6AE30005CBA58 /* ICMBaseViewController */,
+				0413F81F18F6AE30005CBA58 /* ICMPreviewViewController */,
 				0413F81518F6608B005CBA58 /* ICMMenuViewCotrnoller */,
 				0413F7FD18F454F1005CBA58 /* ICMCollageViewController */,
 				0413F7F618F3C3CE005CBA58 /* ICMUserSearchViewController */,
@@ -441,9 +467,11 @@
 				04E56FCD18F291B1001BB14E /* main.m in Sources */,
 				04E5700C18F2B032001BB14E /* ICMUser.m in Sources */,
 				04E5700618F2ACE3001BB14E /* ICMAPIClient.m in Sources */,
+				0413F82218F6AE41005CBA58 /* ICMBaseViewController.m in Sources */,
 				0413F7FC18F4471A005CBA58 /* ICMCollage.m in Sources */,
 				0413F81418F64B18005CBA58 /* UIImage+CollagePreview.m in Sources */,
 				0413F81118F64AFB005CBA58 /* UIView+RelativeFrame.m in Sources */,
+				0413F82518F6AECA005CBA58 /* ICMPreviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +554,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -603,7 +631,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -636,7 +664,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

@@ -10,8 +10,10 @@
 
 @class ICMUser;
 
+typedef void (^ICMUserSearchCompletionBlock)(ICMUser *user);
+
 @interface ICMUserSearchViewController : UITableViewController
 
-@property (nonatomic, copy) void (^completion)(ICMUser *user);
+@property (nonatomic, copy) ICMUserSearchCompletionBlock completion;
 
 @end

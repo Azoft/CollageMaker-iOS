@@ -20,7 +20,7 @@
     self.thumbnailImage = [ICMImage objectWithDictionary:imagesDict[@"thumbnail"]];
     self.lowResolutionImage = [ICMImage objectWithDictionary:imagesDict[@"low_resolution"]];
     self.standartResolutionImage = [ICMImage objectWithDictionary:imagesDict[@"standard_resolution"]];
-    self.id = keyedValues[@"id"];
+    self.remoteID = keyedValues[@"id"];
     self.likesCount = [keyedValues[@"likes"][@"count"] integerValue];
 }
 

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MWPhotoBrowser/MWPhotoBrowser.h>
+#import "ICMBaseViewController.h"
 
 @class ICMCollage;
 
-@interface ICMCollageViewController : UIViewController <MWPhotoBrowserDelegate, MFMailComposeViewControllerDelegate>
+@interface ICMCollageViewController : ICMBaseViewController <MWPhotoBrowserDelegate>
 
 @property (nonatomic, strong) ICMCollage *collage;
 @property (nonatomic, strong) NSArray *mediaPhotos;

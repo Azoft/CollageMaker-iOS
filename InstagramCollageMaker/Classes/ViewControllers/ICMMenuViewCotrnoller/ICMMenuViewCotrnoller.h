@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <iCarousel/iCarousel.h>
+#import "ICMBaseViewController.h"
 
-@interface ICMMenuViewCotrnoller : UIViewController <iCarouselDataSource, iCarouselDelegate>
+@interface ICMMenuViewCotrnoller : ICMBaseViewController <iCarouselDataSource, iCarouselDelegate>
 
 @end

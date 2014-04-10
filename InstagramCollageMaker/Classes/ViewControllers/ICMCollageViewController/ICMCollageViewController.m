@@ -12,10 +12,10 @@
 #import "ICMImage.h"
 #import "ICMMedia.h"
 #import "UIView+ImageRender.h"
+#import "ICMPreviewViewController.h"
 
 #import <QuartzCore/CALayer.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import <MessageUI/MFMailComposeViewController.h>
 
 @interface ICMCollageViewController ()
 
@@ -30,7 +30,7 @@
     if ((self = [super initWithCoder:aDecoder])) {
         self.edgesForExtendedLayout = UIRectEdgeBottom;
         
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                target:self
                                                                                                action:@selector(onSendButtonTap:)];
         self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -150,16 +150,9 @@
 #pragma mark - Actions
 
 - (void)onSendButtonTap:(id)sender {
-    if ([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController* mailVC = [[MFMailComposeViewController alloc] init];
-        mailVC.mailComposeDelegate = self;
-        [mailVC setSubject:@"Instagram collage"];
-        NSData *imageData = UIImagePNGRepresentation([_collageView renderImage]);
-        [mailVC addAttachmentData:imageData mimeType:@"image/png" fileName:@"photoCollage"];
-        [self presentViewController:mailVC animated:YES completion:nil];
-    } else {
-        [SVProgressHUD showErrorWithStatus:@"В данный момент отправка невозможна"];
-    }
+    ICMPreviewViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ICMPreviewViewController"];
+    vc.collageImage = [_collageView renderImage];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onCollageElementTap:(UIButton *)sender {
@@ -172,15 +165,6 @@
     browser.startOnGrid = YES;
     [browser setCurrentPhotoIndex:0];
     [self.navigationController pushViewController:browser animated:YES];
-}
-
-#pragma mark - 
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    if (result == MFMailComposeResultFailed) {
-        [SVProgressHUD showErrorWithStatus:@"Не удалось отправить email"];
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - MWPhotoBrowserDelegate

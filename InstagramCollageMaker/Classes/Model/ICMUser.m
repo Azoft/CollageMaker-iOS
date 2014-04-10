@@ -80,6 +80,8 @@ const CGFloat kICMMaxMediaCount = 100;
                                     }];
 }
 
+#pragma mark - API KVC setters
+
 - (void)setProfile_picture:(NSString *)picureURLString {
     self.photoURL = [NSURL URLWithString:picureURLString];
 }

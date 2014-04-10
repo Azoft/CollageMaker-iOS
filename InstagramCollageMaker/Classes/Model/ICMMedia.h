@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, ICMMediaType) {
 
 @interface ICMMedia : ICMRemoteObject
 
-@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *remoteID;
 @property (nonatomic) NSInteger likesCount;
 @property (nonatomic) ICMMediaType type;
 @property (nonatomic, strong) ICMImage *lowResolutionImage;

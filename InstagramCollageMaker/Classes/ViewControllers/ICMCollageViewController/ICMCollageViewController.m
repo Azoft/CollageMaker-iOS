@@ -13,6 +13,7 @@
 #import "ICMMedia.h"
 #import "UIView+ImageRender.h"
 #import "ICMPreviewViewController.h"
+#import "ICMCollageElementView.h"
 
 #import <QuartzCore/CALayer.h>
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -23,7 +24,7 @@
 
 @implementation ICMCollageViewController {
     UIView *_collageView;
-    __weak UIButton *_currentCollageElementButton;
+    __weak ICMCollageElementView *_currentCollageElementView;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -32,7 +33,7 @@
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                target:self
-                                                                                               action:@selector(onSendButtonTap:)];
+                                                                                               action:@selector(onDoneButtonTap:)];
         self.navigationItem.rightBarButtonItem.enabled = NO;
         self.navigationItem.title = @"Выберите фотографии";
     }
@@ -115,14 +116,8 @@
 }
 
 - (void)createCollageElementViewWithRelativeFrame:(CGRect)relativeFrame {
-    UIButton *result = [UIButton buttonWithType:UIButtonTypeCustom];
-    result.backgroundColor = [UIColor colorWithWhite:0. alpha:0.3];
-    result.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    ICMCollageElementView *result = [ICMCollageElementView new];
     result.relativeFrame = relativeFrame;
-    [result setTitle:@"+" forState:UIControlStateNormal];
-    [result setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [result setTitleColor:[UIColor colorWithWhite:1. alpha:0.5] forState:UIControlStateHighlighted];
-    result.titleLabel.font = [UIFont boldSystemFontOfSize:25.];
     [result addTarget:self action:@selector(onCollageElementTap:) forControlEvents:UIControlEventTouchUpInside];
     [_collageView addSubview:result];
 }
@@ -133,11 +128,10 @@
     }
     [photoImage imageWithCompletion:^(UIImage *image) {
         if (image) {
-            [_currentCollageElementButton setImage:image forState:UIControlStateNormal];
+            _currentCollageElementView.image = image;
             [SVProgressHUD dismiss];
-            [_currentCollageElementButton setTitle:nil forState:UIControlStateNormal];
             
-            NSArray *images = [[_collageView.subviews valueForKey:@"currentImage"] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+            NSArray *images = [[_collageView.subviews valueForKey:@"image"] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
                 return [evaluatedObject isKindOfClass:[UIImage class]];
             }]];
             self.navigationItem.rightBarButtonItem.enabled = [self.collage.relativeFrames count] == [images count];
@@ -149,14 +143,14 @@
 
 #pragma mark - Actions
 
-- (void)onSendButtonTap:(id)sender {
+- (void)onDoneButtonTap:(id)sender {
     ICMPreviewViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ICMPreviewViewController"];
     vc.collageImage = [_collageView renderImage];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)onCollageElementTap:(UIButton *)sender {
-    _currentCollageElementButton = sender;
+- (void)onCollageElementTap:(id)sender {
+    _currentCollageElementView = sender;
     
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
     browser.enableGrid = YES;

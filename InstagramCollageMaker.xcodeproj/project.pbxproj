@@ -17,6 +17,7 @@
 		0413F81818F6608B005CBA58 /* ICMMenuViewCotrnoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413F81718F6608B005CBA58 /* ICMMenuViewCotrnoller.m */; };
 		0413F82218F6AE41005CBA58 /* ICMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413F82118F6AE41005CBA58 /* ICMBaseViewController.m */; };
 		0413F82518F6AECA005CBA58 /* ICMPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413F82418F6AECA005CBA58 /* ICMPreviewViewController.m */; };
+		0413F82818F7925A005CBA58 /* ICMCollageElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413F82718F7925A005CBA58 /* ICMCollageElementView.m */; };
 		04E56FC118F291B1001BB14E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E56FC018F291B1001BB14E /* Foundation.framework */; };
 		04E56FC318F291B1001BB14E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E56FC218F291B1001BB14E /* CoreGraphics.framework */; };
 		04E56FC518F291B1001BB14E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E56FC418F291B1001BB14E /* UIKit.framework */; };
@@ -68,6 +69,8 @@
 		0413F82118F6AE41005CBA58 /* ICMBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMBaseViewController.m; sourceTree = "<group>"; };
 		0413F82318F6AECA005CBA58 /* ICMPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMPreviewViewController.h; sourceTree = "<group>"; };
 		0413F82418F6AECA005CBA58 /* ICMPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMPreviewViewController.m; sourceTree = "<group>"; };
+		0413F82618F7925A005CBA58 /* ICMCollageElementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMCollageElementView.h; sourceTree = "<group>"; };
+		0413F82718F7925A005CBA58 /* ICMCollageElementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMCollageElementView.m; sourceTree = "<group>"; };
 		04E56FBD18F291B1001BB14E /* InstagramCollageMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramCollageMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E56FC018F291B1001BB14E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04E56FC218F291B1001BB14E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,6 +141,8 @@
 			children = (
 				0413F7FE18F4552A005CBA58 /* ICMCollageViewController.h */,
 				0413F7FF18F4552A005CBA58 /* ICMCollageViewController.m */,
+				0413F82618F7925A005CBA58 /* ICMCollageElementView.h */,
+				0413F82718F7925A005CBA58 /* ICMCollageElementView.m */,
 			);
 			path = ICMCollageViewController;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 				0413F82218F6AE41005CBA58 /* ICMBaseViewController.m in Sources */,
 				0413F7FC18F4471A005CBA58 /* ICMCollage.m in Sources */,
 				0413F81418F64B18005CBA58 /* UIImage+CollagePreview.m in Sources */,
+				0413F82818F7925A005CBA58 /* ICMCollageElementView.m in Sources */,
 				0413F81118F64AFB005CBA58 /* UIView+RelativeFrame.m in Sources */,
 				0413F82518F6AECA005CBA58 /* ICMPreviewViewController.m in Sources */,
 			);

@@ -33,7 +33,7 @@
     }
 }
 
-- (void)imageWithCompletion:(void (^)(UIImage *image))completion {
+- (void)imageWithCompletion:(ICMImageRequestCompletionBlock)completion {
     _loadingInProgress = YES;
     
     if (completion && self.underlyingImage) {

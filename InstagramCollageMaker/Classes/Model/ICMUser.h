@@ -8,14 +8,17 @@
 
 #import "ICMRemoteObject.h"
 
+typedef void (^ICMRequrestObjectsCompletionBlock)(NSArray *objects, NSError *error);
+typedef void (^ICMRequrestPermissionsCompletionBlock)(BOOL result, NSError *error);
+
 @interface ICMUser : ICMRemoteObject
 
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, strong) NSURL *photoURL;
 @property (nonatomic) NSUInteger remoteID;
 
-+ (NSURLSessionDataTask *)requestUsersWithUserName:(NSString *)username completion:(void (^)(NSArray *users, NSError *error))completion;
-- (void)requesTopPhotosWithCompletion:(void (^)(NSArray *mediaObjects, NSError *error))completion;
-- (NSURLSessionDataTask *)checkUserPermissionsWithCompletion:(void (^)(BOOL userIsAviable, NSError *error))completion;
++ (NSURLSessionDataTask *)requestUsersWithUserName:(NSString *)username completion:(ICMRequrestObjectsCompletionBlock)completion;
+- (void)requesTopPhotosWithCompletion:(ICMRequrestObjectsCompletionBlock)completion;
+- (NSURLSessionDataTask *)checkUserPermissionsWithCompletion:(ICMRequrestPermissionsCompletionBlock)completion;
 
 @end

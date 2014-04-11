@@ -10,6 +10,8 @@
 
 #import <MWPhotoBrowser/MWPhotoProtocol.h>
 
+typedef void (^ICMImageRequestCompletionBlock)(UIImage *image);
+
 @interface ICMImage : ICMRemoteObject <MWPhoto>
 
 @property (nonatomic, strong) UIImage *underlyingImage;
@@ -17,6 +19,6 @@
 @property (nonatomic) CGSize size;
 @property (nonatomic, strong) NSURL *imageURL;
 
-- (void)imageWithCompletion:(void (^)(UIImage *image))completion;
+- (void)imageWithCompletion:(ICMImageRequestCompletionBlock)completion;
 
 @end

@@ -14,7 +14,7 @@ const CGFloat kICMMaxMediaCount = 100;
 
 @implementation ICMUser
 
-+ (NSURLSessionDataTask *)requestUsersWithUserName:(NSString *)username completion:(void (^)(NSArray *users, NSError *error))completion {
++ (NSURLSessionDataTask *)requestUsersWithUserName:(NSString *)username completion:(ICMRequrestObjectsCompletionBlock)completion {
     return [[ICMAPIClient sharedClient] GET:@"users/search"
                                  parameters:@{@"q" : username ?: @"", @"count" : @(NSIntegerMax)}
                                     success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -28,14 +28,14 @@ const CGFloat kICMMaxMediaCount = 100;
                                     }];
 }
 
-- (void)requesTopPhotosWithCompletion:(void (^)(NSArray *mediaObjects, NSError *error))completion {
+- (void)requesTopPhotosWithCompletion:(ICMRequrestObjectsCompletionBlock)completion {
     [self requestPhotoMediaWithLPhotos:[NSMutableArray new] maxID:nil maxMediaCount:kICMMaxMediaCount completion:completion];
 }
 
 - (NSURLSessionDataTask *)requestPhotoMediaWithLPhotos:(NSMutableArray *)photos
                                                  maxID:(NSString *)maxID
                                          maxMediaCount:(unsigned)maxMediaCount
-                                            completion:(void (^)(NSArray *mediaObjects, NSError *error))completion {
+                                            completion:(ICMRequrestObjectsCompletionBlock)completion {
     NSDictionary *params;
     if (maxID) {
         params = @{@"max_id" : maxID};
@@ -66,7 +66,7 @@ const CGFloat kICMMaxMediaCount = 100;
                                     }];
 }
 
-- (NSURLSessionDataTask *)checkUserPermissionsWithCompletion:(void (^)(BOOL userIsAviable, NSError *error))completion {
+- (NSURLSessionDataTask *)checkUserPermissionsWithCompletion:(ICMRequrestPermissionsCompletionBlock)completion {
     return [[ICMAPIClient sharedClient] GET:[NSString stringWithFormat:@"users/%lu/", (unsigned long)self.remoteID]
                                  parameters:nil
                                     success:^(NSURLSessionDataTask *task, id responseObject) {

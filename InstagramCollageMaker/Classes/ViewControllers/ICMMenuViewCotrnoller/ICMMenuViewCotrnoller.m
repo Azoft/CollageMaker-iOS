@@ -43,10 +43,6 @@
     [super viewDidLoad];
     
     self.collagePreviewCarousel.type = iCarouselTypeCoverFlow2;
-    
-    self.selectedUser = [[ICMUser alloc] init];
-    self.selectedUser.id = 7380;
-    self.selectedUser.username = @"andrey";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

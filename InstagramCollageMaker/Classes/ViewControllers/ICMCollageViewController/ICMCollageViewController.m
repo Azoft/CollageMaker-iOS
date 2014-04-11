@@ -18,6 +18,24 @@
 #import <QuartzCore/CALayer.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
+@interface ICMPhotoBrowser : MWPhotoBrowser
+
+@end
+
+@implementation ICMPhotoBrowser
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+//    self.navigationController.navigationBar.topItem.title = @"";
+}
+
+- (void)setTitle:(NSString *)title {
+    [super setTitle:@"Выберите картинку"];
+}
+
+@end
+
 @interface ICMCollageViewController ()
 
 @end
@@ -30,12 +48,6 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
         self.edgesForExtendedLayout = UIRectEdgeBottom;
-        
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                               target:self
-                                                                                               action:@selector(onDoneButtonTap:)];
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-        self.navigationItem.title = @"Выберите фотографии";
     }
     return self;
 }
@@ -143,7 +155,7 @@
 
 #pragma mark - Actions
 
-- (void)onDoneButtonTap:(id)sender {
+- (IBAction)onDoneButtonTap:(id)sender {
     ICMPreviewViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ICMPreviewViewController"];
     vc.collageImage = [_collageView renderImage];
     [self.navigationController pushViewController:vc animated:YES];
@@ -152,7 +164,7 @@
 - (void)onCollageElementTap:(id)sender {
     _currentCollageElementView = sender;
     
-    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    MWPhotoBrowser *browser = [[ICMPhotoBrowser alloc] initWithDelegate:self];
     browser.enableGrid = YES;
     browser.displayActionButton = NO;
     browser.displaySelectionButtons = YES;

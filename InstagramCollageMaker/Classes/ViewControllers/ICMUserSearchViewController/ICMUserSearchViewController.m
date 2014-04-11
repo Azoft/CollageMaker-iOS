@@ -12,6 +12,7 @@
 
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
+
 @interface ICMUserSearchViewController ()
 
 @property (nonatomic, strong) UIView *headerView;
@@ -31,7 +32,10 @@
     [super viewDidLoad];
     
     _searchResults = [NSMutableDictionary new];
+    
+    self.searchDisplayController.searchBar.placeholder = @"Поиск";
     self.searchDisplayController.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.searchDisplayController.searchResultsTableView.backgroundColor = self.tableView.backgroundColor;
 }
 
 #pragma mark - helpers
@@ -45,18 +49,18 @@
     const CGFloat footerVerticalPaddings = 15.;
     if (!_headerView) {
         _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        _activityIndicatorView.color = [UIColor blueColor];
+        _activityIndicatorView.color = [UIColor whiteColor];
         CGRect frame = CGRectZero;
         frame.size.width = self.view.frame.size.width;
         frame.size.height = _activityIndicatorView.frame.size.height + footerVerticalPaddings * 2.;
         _headerView = [[UIView alloc] initWithFrame:frame];
-        _headerView.backgroundColor = [UIColor whiteColor];
+        _headerView.backgroundColor = [UIColor clearColor];
         [_headerView addSubview:_activityIndicatorView];
         _activityIndicatorView.center = CGPointMake(frame.size.width / 2., frame.size.height / 2.);
         
         _errorLabel = [[UILabel alloc] initWithFrame:_headerView.bounds];
         _errorLabel.backgroundColor = [UIColor clearColor];
-        _errorLabel.textColor = [UIColor blackColor];
+        _errorLabel.textColor = [UIColor whiteColor];
         _errorLabel.numberOfLines = 0;
         _errorLabel.textAlignment = NSTextAlignmentCenter;
         [_headerView addSubview:_errorLabel];
@@ -134,6 +138,9 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     ICMUser *user = ICMUSER(indexPath);
+    
+    cell.backgroundColor = self.tableView.backgroundColor;
+    cell.textLabel.textColor = [UIColor whiteColor];
     
     cell.textLabel.text = user.username;
     [cell.imageView setImageWithURL:user.photoURL placeholderImage:[UIImage imageNamed:@"AvatarPlaceholder"]];

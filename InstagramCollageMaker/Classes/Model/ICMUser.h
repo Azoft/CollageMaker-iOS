@@ -12,7 +12,7 @@
 
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, strong) NSURL *photoURL;
-@property (nonatomic) NSUInteger id;
+@property (nonatomic) NSUInteger remoteID;
 
 + (NSURLSessionDataTask *)requestUsersWithUserName:(NSString *)username completion:(void (^)(NSArray *users, NSError *error))completion;
 - (void)requesTopPhotosWithCompletion:(void (^)(NSArray *mediaObjects, NSError *error))completion;

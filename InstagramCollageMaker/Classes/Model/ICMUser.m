@@ -40,7 +40,7 @@ const CGFloat kICMMaxMediaCount = 100;
     if (maxID) {
         params = @{@"max_id" : maxID};
     }
-    return [[ICMAPIClient sharedClient] GET:[NSString stringWithFormat:@"users/%lu/media/recent/", (unsigned long)self.id]
+    return [[ICMAPIClient sharedClient] GET:[NSString stringWithFormat:@"users/%lu/media/recent/", (unsigned long)self.remoteID]
                                  parameters:params
                                     success:^(NSURLSessionDataTask *task, id responseObject) {
                                         NSString *newMaxID = responseObject[@"pagination"][@"next_max_id"];
@@ -67,7 +67,7 @@ const CGFloat kICMMaxMediaCount = 100;
 }
 
 - (NSURLSessionDataTask *)checkUserPermissionsWithCompletion:(void (^)(BOOL userIsAviable, NSError *error))completion {
-    return [[ICMAPIClient sharedClient] GET:[NSString stringWithFormat:@"users/%lu/", (unsigned long)self.id]
+    return [[ICMAPIClient sharedClient] GET:[NSString stringWithFormat:@"users/%lu/", (unsigned long)self.remoteID]
                                  parameters:nil
                                     success:^(NSURLSessionDataTask *task, id responseObject) {
                                         if (completion) {
@@ -84,6 +84,10 @@ const CGFloat kICMMaxMediaCount = 100;
 
 - (void)setProfile_picture:(NSString *)picureURLString {
     self.photoURL = [NSURL URLWithString:picureURLString];
+}
+
+- (void)setId:(NSUInteger)remoteID {
+    self.remoteID = remoteID;
 }
 
 @end

@@ -13,11 +13,13 @@
 #import "ICMCollage.h"
 #import "UIImage+CollagePreview.h"
 
+#import <QuartzCore/CALayer.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface ICMMenuViewCotrnoller ()
 
 @property (nonatomic, weak) IBOutlet UIButton *giveCollageButton;
+@property (nonatomic, weak) IBOutlet UIButton *nameButton;
 @property (nonatomic, weak) IBOutlet iCarousel *collagePreviewCarousel;
 
 @property (nonatomic, strong) ICMUser *selectedUser;
@@ -42,6 +44,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.nameButton.layer.cornerRadius = self.giveCollageButton.layer.cornerRadius = 5.;
+    
     self.collagePreviewCarousel.type = iCarouselTypeCoverFlow2;
 }
 
@@ -64,7 +68,7 @@
 #pragma mark - helpers
 
 - (void)setSelectedUser:(ICMUser *)selectedUser {
-    self.navigationItem.title = selectedUser.username;
+    [self.nameButton setTitle:selectedUser.username forState:UIControlStateNormal];
     _selectedUser = selectedUser;
     [self refreshGiveCollageButton];
 }

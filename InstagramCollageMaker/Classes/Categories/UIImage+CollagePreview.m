@@ -20,7 +20,7 @@
     [[UIColor whiteColor] setFill];
     CGContextFillRect(context, CGRectMake(0., 0., size.width, size.height));
     
-    [[UIColor blackColor] setFill];
+    [[UIColor colorWithWhite:0. alpha:0.5] setFill];
     [collage enumerateRelativeFramesUsingBlock:^(CGRect relativeFrame, NSUInteger index) {
         CGRect frame = relativeFrame;
         frame.origin.x *= size.width;

@@ -1,5 +1,16 @@
 ## InstagramCollageMaker
 
+##
+
+# Support ios versions
+
+ios 7 support only
+
+# Supported devices
+
+iPhone, iPod touch (with 3,5 and 4 inch screen portrait orientation)
+iPad mini, iPad mini 2, iPad 2, iPad with retina display (portrait and landscape orientations)
+
 # How to use
 
 Open InstagramCollageMaker.xcworkspace (do not open InstagramCollageMaker.xcodeproj).

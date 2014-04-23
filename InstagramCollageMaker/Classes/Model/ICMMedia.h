@@ -9,7 +9,7 @@
 #import "ICMRemoteObject.h"
 
 typedef NS_ENUM(NSUInteger, ICMMediaType) {
-    ICMMediaTypePhoto,
+    ICMMediaTypePhoto = 0,
     ICMMediaTypeVideo,
     ICMMediaTypeUnknown
 };

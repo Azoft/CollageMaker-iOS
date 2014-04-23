@@ -25,18 +25,18 @@
 @property (nonatomic, strong) ICMUser *selectedUser;
 @property (nonatomic, strong) ICMCollage *selectedCollage;
 
+@property (nonatomic, strong) NSArray *collages;
+@property (nonatomic, strong) NSMutableDictionary *previewImages;
+
 @end
 
-@implementation ICMMenuViewCotrnoller {
-    NSArray *_colllages;
-    NSMutableDictionary *_previewImages;
-}
+@implementation ICMMenuViewCotrnoller
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
-        _colllages = [ICMCollage collages];
-        _selectedCollage = [_colllages count] > 0 ? _colllages[0] : nil;
-        _previewImages = [NSMutableDictionary dictionaryWithCapacity:[_colllages count]];
+        _collages = [ICMCollage collages];
+        _selectedCollage = [_collages firstObject];
+        _previewImages = [NSMutableDictionary dictionaryWithCapacity:[_collages count]];
     }
     return self;
 }
@@ -62,7 +62,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
-    [_previewImages removeAllObjects];
+    [self.previewImages removeAllObjects];
 }
 
 #pragma mark - helpers
@@ -106,7 +106,7 @@
 #pragma mark iCarousel staff
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
-    return [_colllages count];
+    return [self.collages count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view {
@@ -119,24 +119,25 @@
                                                                self.collagePreviewCarousel.frame.size.height)];
     }
     
-    if (!_previewImages[@(index)]) {
-        _previewImages[@(index)] = [UIImage renderPreviewImageWithCollage:_colllages[index] ofSize:result.frame.size];
+    if (!self.previewImages[@(index)]) {
+        self.previewImages[@(index)] = [UIImage renderPreviewImageWithCollage:self.collages[index] ofSize:result.frame.size];
     }
-    result.image = _previewImages[@(index)];
+    result.image = self.previewImages[@(index)];
     
     return result;
 }
 
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value {
-    return option == iCarouselOptionSpacing ? value * 1.1 : value;
+    const CGFloat carouselSpacingCoef = 1.1;
+    return option == iCarouselOptionSpacing ? value * carouselSpacingCoef : value;
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
-    self.selectedCollage = _colllages[index];
+    self.selectedCollage = self.collages[index];
 }
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel {
-    self.selectedCollage = _colllages[carousel.currentItemIndex];
+    self.selectedCollage = self.collages[carousel.currentItemIndex];
 }
 
 @end

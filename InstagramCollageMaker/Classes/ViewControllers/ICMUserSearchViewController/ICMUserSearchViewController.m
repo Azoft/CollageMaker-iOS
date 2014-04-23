@@ -19,19 +19,19 @@
 @property (nonatomic) BOOL needShowActivityIndicator;
 @property (nonatomic, strong) NSURLSessionDataTask *currentSearchDataTask;
 
+@property (nonatomic, strong) NSMutableDictionary *searchResults;
+@property (nonatomic, strong) NSString *currentSearchWord;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) UILabel *errorLabel;
+
 @end
 
-@implementation ICMUserSearchViewController {
-    NSMutableDictionary *_searchResults;
-    NSString *_currentSearchWord;
-    UIActivityIndicatorView *_activityIndicatorView;
-    UILabel *_errorLabel;
-}
+@implementation ICMUserSearchViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _searchResults = [NSMutableDictionary new];
+    self.searchResults = [NSMutableDictionary new];
     
     self.searchDisplayController.searchBar.placeholder = @"Поиск";
     self.searchDisplayController.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -41,30 +41,30 @@
 #pragma mark - helpers
 
 - (void)setCurrentSearchDataTask:(NSURLSessionDataTask *)currentSearchDataTask {
-    [_currentSearchDataTask cancel];
+    [self.currentSearchDataTask cancel];
     _currentSearchDataTask = currentSearchDataTask;
 }
 
 - (UIView *)headerView {
     const CGFloat footerVerticalPaddings = 15.;
     if (!_headerView) {
-        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        _activityIndicatorView.color = [UIColor whiteColor];
+        self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        self.activityIndicatorView.color = [UIColor whiteColor];
         CGRect frame = CGRectZero;
         frame.size.width = self.view.frame.size.width;
-        frame.size.height = _activityIndicatorView.frame.size.height + footerVerticalPaddings * 2.;
+        frame.size.height = self.activityIndicatorView.frame.size.height + footerVerticalPaddings * 2.;
         _headerView = [[UIView alloc] initWithFrame:frame];
         _headerView.backgroundColor = [UIColor clearColor];
-        [_headerView addSubview:_activityIndicatorView];
-        _activityIndicatorView.center = CGPointMake(frame.size.width / 2., frame.size.height / 2.);
+        [_headerView addSubview:self.activityIndicatorView];
+        self.activityIndicatorView.center = CGPointMake(frame.size.width / 2., frame.size.height / 2.);
         
-        _errorLabel = [[UILabel alloc] initWithFrame:_headerView.bounds];
-        _errorLabel.backgroundColor = [UIColor clearColor];
-        _errorLabel.textColor = [UIColor whiteColor];
-        _errorLabel.numberOfLines = 0;
-        _errorLabel.textAlignment = NSTextAlignmentCenter;
-        [_headerView addSubview:_errorLabel];
-        _errorLabel.hidden = YES;
+        self.errorLabel = [[UILabel alloc] initWithFrame:_headerView.bounds];
+        self.errorLabel.backgroundColor = [UIColor clearColor];
+        self.errorLabel.textColor = [UIColor whiteColor];
+        self.errorLabel.numberOfLines = 0;
+        self.errorLabel.textAlignment = NSTextAlignmentCenter;
+        [_headerView addSubview:self.errorLabel];
+        self.errorLabel.hidden = YES;
     }
     return _headerView;
 }
@@ -75,9 +75,9 @@
 
 - (void)setNeedShowActivityIndicator:(BOOL)needShowActivityIndicator {
     [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(setNeedShowActivityIndicator:) object:@(NO)];
-    _errorLabel.hidden = YES;
-    _activityIndicatorView.hidden = NO;
-    if (_needShowActivityIndicator != needShowActivityIndicator) {
+    self.errorLabel.hidden = YES;
+    self.activityIndicatorView.hidden = NO;
+    if (self.needShowActivityIndicator != needShowActivityIndicator) {
         _needShowActivityIndicator = needShowActivityIndicator;
         [[self activeTableView] reloadData];
     }
@@ -86,24 +86,26 @@
 - (void)hideActivityIndicatorWithErrorMessage:(NSString *)errorMessage {
     [self performSelector:@selector(setNeedShowActivityIndicator:) withObject:@(NO) afterDelay:2.];
     
-    _activityIndicatorView.hidden = YES;
-    _errorLabel.hidden = NO;
-    _errorLabel.text = errorMessage;
+    self.activityIndicatorView.hidden = YES;
+    self.errorLabel.hidden = NO;
+    self.errorLabel.text = errorMessage;
 }
 
 - (void)requestUsersWithName:(NSString *)userName {
     self.needShowActivityIndicator = YES;
     
+    __weak __typeof(self) this = self;
+    
     self.currentSearchDataTask = [ICMUser requestUsersWithUserName:userName
                                                         completion:^(NSArray *users, NSError *error) {
-                                                            BOOL isCurrentWord = [userName isEqualToString:_currentSearchWord];
+                                                            BOOL isCurrentWord = [userName isEqualToString:this.currentSearchWord];
                                                             if (error && isCurrentWord) {
-                                                                [self hideActivityIndicatorWithErrorMessage:[error localizedDescription]];
+                                                                [this hideActivityIndicatorWithErrorMessage:[error localizedDescription]];
                                                             } else if (users) {
-                                                                _searchResults[userName] = users;
+                                                                this.searchResults[userName] = users;
                                                                 if (isCurrentWord) {
-                                                                    self.needShowActivityIndicator = NO;
-                                                                    [[self activeTableView] reloadData];
+                                                                    this.needShowActivityIndicator = NO;
+                                                                    [[this activeTableView] reloadData];
                                                                 }
                                                             }
                                                         }];
@@ -117,17 +119,17 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (self.needShowActivityIndicator) {
-        [_activityIndicatorView startAnimating];
+        [self.activityIndicatorView startAnimating];
         return self.headerView;
     }
     return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_searchResults[_currentSearchWord] count];
+    return [self.searchResults[self.currentSearchWord] count];
 }
 
-#define ICMUSER(indexPath) (_searchResults[_currentSearchWord][indexPath.row])
+#define ICMUSER(indexPath) (self.searchResults[self.currentSearchWord][indexPath.row])
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [tableView dequeueReusableCellWithIdentifier:@"userCell"] ?: [[UITableViewCell alloc]
@@ -179,10 +181,10 @@
 #pragma mark - UISearchDisplayDelegate
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestUsersWithName:) object:_currentSearchWord];
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(requestUsersWithName:) object:self.currentSearchWord];
     
-    _currentSearchWord = searchString;
-    if ([searchString length] == 0 || _searchResults[_currentSearchWord]) {
+    self.currentSearchWord = searchString;
+    if ([searchString length] == 0 || self.searchResults[self.currentSearchWord]) {
         return YES;
     }
     

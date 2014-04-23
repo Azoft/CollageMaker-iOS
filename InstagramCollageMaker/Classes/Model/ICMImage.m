@@ -9,11 +9,14 @@
 #import "ICMImage.h"
 #import <SDWebImage/SDWebImageManager.h>
 
-@implementation ICMImage {
-    BOOL _loadingInProgress;
-    
-    id <SDWebImageOperation> _imageLoadingOperation;
-}
+@interface ICMImage ()
+
+@property (nonatomic, strong) id <SDWebImageOperation> imageLoadingOperation;
+@property (nonatomic) BOOL loadingInProgress;
+
+@end
+
+@implementation ICMImage
 
 - (void)postCompleteNotification {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -23,7 +26,7 @@
 }
 
 - (void)loadUnderlyingImageAndNotify {
-    if (_loadingInProgress) {
+    if (self.loadingInProgress) {
         return;
     }
     if (self.underlyingImage) {
@@ -34,28 +37,30 @@
 }
 
 - (void)imageWithCompletion:(ICMImageRequestCompletionBlock)completion {
-    _loadingInProgress = YES;
+    self.loadingInProgress = YES;
     
     if (completion && self.underlyingImage) {
         completion(self.underlyingImage);
         return;
     }
     
-    _imageLoadingOperation = [[SDWebImageManager sharedManager] downloadWithURL:self.imageURL
+    __weak __typeof(self) this = self;
+    
+    self.imageLoadingOperation = [[SDWebImageManager sharedManager] downloadWithURL:self.imageURL
                                                                         options:0
                                                                        progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                                                                            float progress = (float)receivedSize / (float)expectedSize;
                                                                            NSDictionary* dict = @{@"progress" : @(progress),
-                                                                                                  @"photo" : self};
+                                                                                                  @"photo" : this};
                                                                            [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_PROGRESS_NOTIFICATION
                                                                                                                                object:dict];
                                                                        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
                                                                            if (error) {
                                                                                NSLog(@"%@", error);
                                                                            }
-                                                                           _imageLoadingOperation = nil;
-                                                                           self.underlyingImage = image;
-                                                                           _loadingInProgress = NO;
+                                                                           this.imageLoadingOperation = nil;
+                                                                           this.underlyingImage = image;
+                                                                           this.loadingInProgress = NO;
                                                                            
                                                                            if (completion) {
                                                                                completion(image);
@@ -64,7 +69,7 @@
 }
 
 - (void)performLoadUnderlyingImageAndNotify {
-    _loadingInProgress = YES;
+    self.loadingInProgress = YES;
     
     [self imageWithCompletion:^(UIImage *image) {
         [self postCompleteNotification];
@@ -77,8 +82,8 @@
 }
 
 - (void)cancelAnyLoading {
-    _loadingInProgress = NO;
-    [_imageLoadingOperation cancel];
+    self.loadingInProgress = NO;
+    [self.imageLoadingOperation cancel];
 }
 
 - (void)setValuesForKeysWithDictionary:(NSDictionary *)keyedValues {

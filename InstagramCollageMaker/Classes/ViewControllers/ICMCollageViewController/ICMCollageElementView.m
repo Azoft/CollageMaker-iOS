@@ -8,11 +8,15 @@
 
 #import "ICMCollageElementView.h"
 
-@implementation ICMCollageElementView {
-    UIScrollView *_scrollView;
-    UIImageView *_imageView;
-    UILabel *_textLabel;
-}
+@interface ICMCollageElementView ()
+
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *textLabel;
+
+@end
+
+@implementation ICMCollageElementView
 
 @dynamic image;
 
@@ -56,78 +60,80 @@
 #pragma mark - helpers
 
 - (void)setImage:(UIImage *)image {
-    _imageView.image = image;
-    _textLabel.hidden = image != nil;
+    self.imageView.image = image;
+    self.textLabel.hidden = image != nil;
     
-    CGRect frame = _imageView.frame;
+    CGRect frame = self.imageView.frame;
     frame.size = image.size;
-    _imageView.frame = frame;
+    self.imageView.frame = frame;
     
-    _scrollView.contentSize = image.size;
+    self.scrollView.contentSize = image.size;
     
     [self setMaxMinZoomScalesForCurrentBounds];
 }
 
 - (UIImage *)image {
-    return _imageView.image;
+    return self.imageView.image;
 }
 
 #pragma mark - UIScrollViewStaff
 
 - (void)setMaxMinZoomScalesForCurrentBounds {
-	_scrollView.maximumZoomScale = 1;
-	_scrollView.minimumZoomScale = 1;
-	_scrollView.zoomScale = 1;
+	self.scrollView.maximumZoomScale = 1;
+	self.scrollView.minimumZoomScale = 1;
+	self.scrollView.zoomScale = 1;
     
-	_imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
+	self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
 	
     CGSize boundsSize = self.bounds.size;
-    CGSize imageSize = _imageView.image.size;
+    CGSize imageSize = self.imageView.image.size;
     
     CGFloat xScale = boundsSize.width / imageSize.width;
     CGFloat yScale = boundsSize.height / imageSize.height;
     CGFloat minScale = MIN(xScale, yScale);
     
-    CGFloat maxScale = 3;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        maxScale = 4;
-    }
+    const CGFloat iPhoneMaxScale = 3.;
+    const CGFloat iPadMaxScale = 4.;
+    
+    CGFloat maxScale = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? iPadMaxScale : iPhoneMaxScale;
     
 	if (xScale >= 1 && yScale >= 1) {
 		minScale = 1.0;
 	}
 	
-	_scrollView.maximumZoomScale = maxScale;
-	_scrollView.minimumZoomScale = minScale;
+	self.scrollView.maximumZoomScale = maxScale;
+	self.scrollView.minimumZoomScale = minScale;
     
-    _scrollView.zoomScale = [self initialZoomScaleWithMinScale];
+    self.scrollView.zoomScale = [self initialZoomScaleWithMinScale];
     
-    if (_scrollView.zoomScale != minScale) {
-        _scrollView.contentOffset = CGPointMake((imageSize.width * _scrollView.zoomScale - boundsSize.width) / 2.0,
-                                                (imageSize.height * _scrollView.zoomScale - boundsSize.height) / 2.0);
-        _scrollView.scrollEnabled = NO;
+    if (self.scrollView.zoomScale != minScale) {
+        self.scrollView.contentOffset = CGPointMake((imageSize.width * self.scrollView.zoomScale - boundsSize.width) / 2.,
+                                                    (imageSize.height * self.scrollView.zoomScale - boundsSize.height) / 2.);
+        self.scrollView.scrollEnabled = NO;
     }
 }
 
 - (CGFloat)initialZoomScaleWithMinScale {
-    CGFloat zoomScale = _scrollView.minimumZoomScale;
+    CGFloat zoomScale = self.scrollView.minimumZoomScale;
     CGSize boundsSize = self.bounds.size;
-    CGSize imageSize = _imageView.image.size;
+    CGSize imageSize = self.imageView.image.size;
     CGFloat boundsAR = boundsSize.width / boundsSize.height;
     CGFloat imageAR = imageSize.width / imageSize.height;
     CGFloat xScale = boundsSize.width / imageSize.width;
     CGFloat yScale = boundsSize.height / imageSize.height;
     
-    if (ABS(boundsAR - imageAR) < 0.17) {
+    const CGFloat minARDifference = 0.17;
+    
+    if (ABS(boundsAR - imageAR) < minARDifference) {
         zoomScale = MAX(xScale, yScale);
-        zoomScale = MIN(MAX(_scrollView.minimumZoomScale, zoomScale), _scrollView.maximumZoomScale);
+        zoomScale = MIN(MAX(self.scrollView.minimumZoomScale, zoomScale), self.scrollView.maximumZoomScale);
     }
     return zoomScale;
 }
 
 - (void)centerScrollViewContents {
-    CGSize boundsSize = _scrollView.bounds.size;
-    CGRect contentsFrame = _imageView.frame;
+    CGSize boundsSize = self.scrollView.bounds.size;
+    CGRect contentsFrame = self.imageView.frame;
     
     if (contentsFrame.size.width < boundsSize.width) {
         contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0f;
@@ -141,13 +147,13 @@
         contentsFrame.origin.y = 0.0f;
     }
     
-    _imageView.frame = contentsFrame;
+    self.imageView.frame = contentsFrame;
 }
 
 #pragma mark UIScrollViewDelegate
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return _imageView;
+    return self.imageView;
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {

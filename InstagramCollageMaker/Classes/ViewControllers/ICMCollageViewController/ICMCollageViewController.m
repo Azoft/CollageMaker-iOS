@@ -26,8 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    self.navigationController.navigationBar.topItem.title = @"";
 }
 
 - (void)setTitle:(NSString *)title {
@@ -38,12 +36,12 @@
 
 @interface ICMCollageViewController ()
 
+@property (nonatomic, strong) UIView *collageView;
+@property (nonatomic, weak) ICMCollageElementView *currentCollageElementView;
+
 @end
 
-@implementation ICMCollageViewController {
-    UIView *_collageView;
-    __weak ICMCollageElementView *_currentCollageElementView;
-}
+@implementation ICMCollageViewController
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -56,10 +54,10 @@
 {
     [super viewDidLoad];
 
-    _collageView = [[UIView alloc] initWithFrame:CGRectMake(0., 0., self.view.frame.size.width, self.view.frame.size.width)];
-    _collageView.backgroundColor = [UIColor whiteColor];
-    _collageView.layer.cornerRadius = 5.;
-    [self.view addSubview:_collageView];
+    self.collageView = [[UIView alloc] initWithFrame:CGRectMake(0., 0., self.view.frame.size.width, self.view.frame.size.width)];
+    self.collageView.backgroundColor = [UIColor whiteColor];
+    self.collageView.layer.cornerRadius = 5.;
+    [self.view addSubview:self.collageView];
     
     if (self.collage) {
         [self buildCollageView];
@@ -71,7 +69,7 @@
     
     const CGFloat kCollageViewPaddings = 5.;
     
-    CGRect frame = _collageView.frame;
+    CGRect frame = self.collageView.frame;
     
     BOOL needUseWidth = YES;
     
@@ -100,11 +98,11 @@
         frame.size.width = frame.size.height * self.collage.ratio;
     }
     
-    _collageView.frame = frame;
+    self.collageView.frame = frame;
     
-    _collageView.center = CGPointMake(self.view.frame.size.width / 2., self.view.frame.size.height / 2.);
+    self.collageView.center = CGPointMake(self.view.frame.size.width / 2., self.view.frame.size.height / 2.);
     
-    [_collageView.subviews makeObjectsPerformSelector:@selector(refreshFrame)];
+    [self.collageView.subviews makeObjectsPerformSelector:@selector(refreshFrame)];
 }
 
 #pragma mark - helpers
@@ -119,7 +117,7 @@
 }
 
 - (void)buildCollageView {
-    [_collageView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.collageView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
     __weak __typeof(self) this = self;
     [self.collage enumerateRelativeFramesUsingBlock:^(CGRect relativeFrame, NSUInteger index) {
@@ -131,7 +129,7 @@
     ICMCollageElementView *result = [ICMCollageElementView new];
     result.relativeFrame = relativeFrame;
     [result addTarget:self action:@selector(onCollageElementTap:) forControlEvents:UIControlEventTouchUpInside];
-    [_collageView addSubview:result];
+    [self.collageView addSubview:result];
 }
 
 - (void)onPhotoSelected:(ICMImage *)photoImage {
@@ -140,10 +138,10 @@
     }
     [photoImage imageWithCompletion:^(UIImage *image) {
         if (image) {
-            _currentCollageElementView.image = image;
+            self.currentCollageElementView.image = image;
             [SVProgressHUD dismiss];
             
-            NSArray *images = [[_collageView.subviews valueForKey:@"image"] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+            NSArray *images = [[self.collageView.subviews valueForKey:@"image"] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
                 return [evaluatedObject isKindOfClass:[UIImage class]];
             }]];
             self.navigationItem.rightBarButtonItem.enabled = [self.collage.relativeFrames count] == [images count];
@@ -157,12 +155,12 @@
 
 - (IBAction)onDoneButtonTap:(id)sender {
     ICMPreviewViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ICMPreviewViewController"];
-    vc.collageImage = [_collageView renderImage];
+    vc.collageImage = [self.collageView renderImage];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onCollageElementTap:(id)sender {
-    _currentCollageElementView = sender;
+    self.currentCollageElementView = sender;
     
     MWPhotoBrowser *browser = [[ICMPhotoBrowser alloc] initWithDelegate:self];
     browser.enableGrid = YES;

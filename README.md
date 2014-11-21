@@ -24,8 +24,8 @@ Open InstagramCollageMaker.xcworkspace (do not open InstagramCollageMaker.xcodep
 
 # TODO:
 
-+ Project localization;
-+ Paging on photo list.
+1. Project localization;
+2. Paging on photo list.
 
 
 ## Libraries

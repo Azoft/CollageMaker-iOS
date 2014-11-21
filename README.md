@@ -22,17 +22,10 @@ This code allows to import 100 photos from any Instagram user feed into your app
 
 Open InstagramCollageMaker.xcworkspace (do not open InstagramCollageMaker.xcodeproj).
 
-# Features
-
-User search by nickname;
-Build photo list from 100 first user photos, sorted by likes;
-Collage formats automatic reading from .plist file;
-Collage previews renders in runtime.
-
 # TODO:
 
-1) Project localization;
-2) Paging on photo list.
++ Project localization;
++ Paging on photo list.
 
 
 ## Libraries

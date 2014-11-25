@@ -1,7 +1,7 @@
 //
 //  iCarousel.h
 //
-//  Version 1.7.6
+//  Version 1.8.1
 //
 //  Created by Nick Lockwood on 01/04/2011.
 //  Copyright 2011 Charcoal Design
@@ -31,27 +31,25 @@
 //
 
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wobjc-missing-property-synthesis"
+
+
 #import <Availability.h>
 #undef weak_delegate
 #undef __weak_delegate
-#if __has_feature(objc_arc_weak) && \
+#if __has_feature(objc_arc) && __has_feature(objc_arc_weak) && \
 (!(defined __MAC_OS_X_VERSION_MIN_REQUIRED) || \
 __MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_8)
 #define weak_delegate weak
-#define __weak_delegate __weak
 #else
 #define weak_delegate unsafe_unretained
-#define __weak_delegate __unsafe_unretained
 #endif
 
 
 #import <QuartzCore/QuartzCore.h>
-#ifdef USING_CHAMELEON
+#if defined USING_CHAMELEON || defined __IPHONE_OS_VERSION_MAX_ALLOWED
 #define ICAROUSEL_IOS
-#elif defined __IPHONE_OS_VERSION_MAX_ALLOWED
-#define ICAROUSEL_IOS
-typedef CGRect NSRect;
-typedef CGSize NSSize;
 #else
 #define ICAROUSEL_MACOS
 #endif
@@ -65,7 +63,7 @@ typedef NSView UIView;
 #endif
 
 
-typedef enum
+typedef NS_ENUM(NSInteger, iCarouselType)
 {
     iCarouselTypeLinear = 0,
     iCarouselTypeRotary,
@@ -79,11 +77,10 @@ typedef enum
     iCarouselTypeTimeMachine,
     iCarouselTypeInvertedTimeMachine,
     iCarouselTypeCustom
-}
-iCarouselType;
+};
 
 
-typedef enum
+typedef NS_ENUM(NSInteger, iCarouselOption)
 {
     iCarouselOptionWrap = 0,
     iCarouselOptionShowBackfaces,
@@ -91,15 +88,15 @@ typedef enum
     iCarouselOptionVisibleItems,
     iCarouselOptionCount,
     iCarouselOptionArc,
-	iCarouselOptionAngle,
+    iCarouselOptionAngle,
     iCarouselOptionRadius,
     iCarouselOptionTilt,
     iCarouselOptionSpacing,
     iCarouselOptionFadeMin,
     iCarouselOptionFadeMax,
-    iCarouselOptionFadeRange
-}
-iCarouselOption;
+    iCarouselOptionFadeRange,
+    iCarouselOptionFadeMinAlpha
+};
 
 
 @protocol iCarouselDataSource, iCarouselDelegate;
@@ -114,6 +111,7 @@ iCarouselOption;
 @property (nonatomic, assign) CGFloat scrollSpeed;
 @property (nonatomic, assign) CGFloat bounceDistance;
 @property (nonatomic, assign, getter = isScrollEnabled) BOOL scrollEnabled;
+@property (nonatomic, assign, getter = isPagingEnabled) BOOL pagingEnabled;
 @property (nonatomic, assign, getter = isVertical) BOOL vertical;
 @property (nonatomic, readonly, getter = isWrapEnabled) BOOL wrapEnabled;
 @property (nonatomic, assign) BOOL bounces;
@@ -131,6 +129,7 @@ iCarouselOption;
 @property (nonatomic, readonly) CGFloat itemWidth;
 @property (nonatomic, strong, readonly) UIView *contentView;
 @property (nonatomic, readonly) CGFloat toggle;
+@property (nonatomic, assign) CGFloat autoscroll;
 @property (nonatomic, assign) BOOL stopAtItemBoundary;
 @property (nonatomic, assign) BOOL scrollToItemBoundary;
 @property (nonatomic, assign) BOOL ignorePerpendicularSwipes;
@@ -149,6 +148,7 @@ iCarouselOption;
 - (NSInteger)indexOfItemView:(UIView *)view;
 - (NSInteger)indexOfItemViewOrSubview:(UIView *)view;
 - (CGFloat)offsetForItemAtIndex:(NSInteger)index;
+- (UIView *)itemViewAtPoint:(CGPoint)point;
 
 - (void)removeItemAtIndex:(NSInteger)index animated:(BOOL)animated;
 - (void)insertItemAtIndex:(NSInteger)index animated:(BOOL)animated;
@@ -161,13 +161,13 @@ iCarouselOption;
 
 @protocol iCarouselDataSource <NSObject>
 
-- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel;
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view;
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel;
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view;
 
 @optional
 
-- (NSUInteger)numberOfPlaceholdersInCarousel:(iCarousel *)carousel;
-- (UIView *)carousel:(iCarousel *)carousel placeholderViewAtIndex:(NSUInteger)index reusingView:(UIView *)view;
+- (NSInteger)numberOfPlaceholdersInCarousel:(iCarousel *)carousel;
+- (UIView *)carousel:(iCarousel *)carousel placeholderViewAtIndex:(NSInteger)index reusingView:(UIView *)view;
 
 @end
 
@@ -193,18 +193,5 @@ iCarouselOption;
 
 @end
 
+#pragma GCC diagnostic pop
 
-@protocol iCarouselDeprecated
-@optional
-
-//deprecated delegate and datasource methods
-//use carousel:valueForOption:withDefault: instead
-
-- (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel;
-- (void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel __attribute__((deprecated));
-- (BOOL)carouselShouldWrap:(iCarousel *)carousel __attribute__((deprecated));
-- (CGFloat)carouselOffsetMultiplier:(iCarousel *)carousel __attribute__((deprecated));
-- (CGFloat)carousel:(iCarousel *)carousel itemAlphaForOffset:(CGFloat)offset __attribute__((deprecated));
-- (CGFloat)carousel:(iCarousel *)carousel valueForTransformOption:(iCarouselOption)option withDefault:(CGFloat)value __attribute__((deprecated));
-
-@end

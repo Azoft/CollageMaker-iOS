@@ -105,11 +105,11 @@
 
 #pragma mark iCarousel staff
 
-- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
     return [self.collages count];
 }
 
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view {
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
     UIImageView *result = (UIImageView *)view;
     
     if (!result) {

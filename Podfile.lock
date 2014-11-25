@@ -1,35 +1,37 @@
 PODS:
-  - AFNetworking (2.2.1):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
+  - AFNetworking (2.5.0):
+    - AFNetworking/NSURLConnection (= 2.5.0)
+    - AFNetworking/NSURLSession (= 2.5.0)
+    - AFNetworking/Reachability (= 2.5.0)
+    - AFNetworking/Security (= 2.5.0)
+    - AFNetworking/Serialization (= 2.5.0)
+    - AFNetworking/UIKit (= 2.5.0)
+  - AFNetworking/NSURLConnection (2.5.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-    - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.1):
+  - AFNetworking/NSURLSession (2.5.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.1):
-    - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.1)
-  - AFNetworking/Security (2.2.1)
-  - AFNetworking/Serialization (2.2.1)
-  - AFNetworking/UIKit (2.2.1):
+  - AFNetworking/Reachability (2.5.0)
+  - AFNetworking/Security (2.5.0)
+  - AFNetworking/Serialization (2.5.0)
+  - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - DACircularProgress (2.2.0)
-  - iCarousel (1.7.6)
-  - MBProgressHUD (0.8)
-  - MWPhotoBrowser (1.4.0):
+  - iCarousel (1.8.1)
+  - MBProgressHUD (0.9)
+  - MWPhotoBrowser (1.4.1):
     - DACircularProgress
     - MBProgressHUD (~> 0.8)
     - PSTCollectionView (~> 1.2)
-    - SDWebImage (~> 3.5.4)
-  - PSTCollectionView (1.2.0)
-  - SDWebImage (3.5.4):
-    - SDWebImage/Core
-  - SDWebImage/Core (3.5.4)
+    - SDWebImage (~> 3.7)
+  - PSTCollectionView (1.2.3)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core (= 3.7.1)
+  - SDWebImage/Core (3.7.1)
   - SVProgressHUD (1.0)
 
 DEPENDENCIES:
@@ -39,13 +41,13 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC CHECKSUMS:
-  AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
-  DACircularProgress: 659d6fd11b5fc099c13ba9350239d9dca324916a
-  iCarousel: e23a26d7ba722215a42144e80adb0dcb59bebc41
-  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  MWPhotoBrowser: b85e89fcf0575062f32c472d389265dce1f068e1
-  PSTCollectionView: fb2ad2790c6efa306b2caf10315b2c1464d1f5c6
-  SDWebImage: 1a62010700adbba823b621fc217906739dbf6aa5
-  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
+  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
+  iCarousel: 5acab560f10dc13da2440c89f35a0ad278b5147d
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  MWPhotoBrowser: be05b3b7521e961382a4ba5579685bf5a00b93d8
+  PSTCollectionView: d9f466e4554cc83260ca9bde7beb27f308e8fd76
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.35.0

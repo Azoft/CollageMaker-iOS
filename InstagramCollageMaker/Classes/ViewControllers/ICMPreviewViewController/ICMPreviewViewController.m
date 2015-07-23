@@ -25,7 +25,7 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply
                                                                                                target:self
                                                                                                action:@selector(onSendButtonTap:)];
-        self.navigationItem.title = @"Превью";
+        self.navigationItem.title = NSLocalizedString(@"preview", nil);
     }
     return self;
 }
@@ -47,7 +47,7 @@
         [mailVC addAttachmentData:imageData mimeType:@"image/png" fileName:@"photoCollage"];
         [self presentViewController:mailVC animated:YES completion:nil];
     } else {
-        [SVProgressHUD showErrorWithStatus:@"В данный момент отправка невозможна, пожалуйста, проверьте настройки email"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"at the moment, not sent, please check your email settings", nil)];
     }
 }
 
@@ -55,7 +55,7 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     if (result == MFMailComposeResultFailed) {
-        [SVProgressHUD showErrorWithStatus:@"Не удалось отправить email"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"failed to send email", nil)];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

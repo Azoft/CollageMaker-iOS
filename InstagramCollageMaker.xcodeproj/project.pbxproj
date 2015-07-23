@@ -22,7 +22,6 @@
 		04E56FC118F291B1001BB14E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E56FC018F291B1001BB14E /* Foundation.framework */; };
 		04E56FC318F291B1001BB14E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E56FC218F291B1001BB14E /* CoreGraphics.framework */; };
 		04E56FC518F291B1001BB14E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E56FC418F291B1001BB14E /* UIKit.framework */; };
-		04E56FCB18F291B1001BB14E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04E56FC918F291B1001BB14E /* InfoPlist.strings */; };
 		04E56FCD18F291B1001BB14E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E56FCC18F291B1001BB14E /* main.m */; };
 		04E56FD418F291B1001BB14E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E56FD218F291B1001BB14E /* Main_iPhone.storyboard */; };
 		04E56FDC18F291B1001BB14E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E56FDB18F291B1001BB14E /* Images.xcassets */; };
@@ -38,6 +37,7 @@
 		04E5700F18F2B7F4001BB14E /* ICMMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E5700E18F2B7F4001BB14E /* ICMMedia.m */; };
 		04E5701218F397F5001BB14E /* ICMImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E5701118F397F5001BB14E /* ICMImage.m */; };
 		0C536D5CACD047769828E13B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D0AD16C77C447699ACEAB6 /* libPods.a */; };
+		640F804F1B61973B00C0CD06 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 640F80511B61973B00C0CD06 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,15 +78,12 @@
 		04E56FC218F291B1001BB14E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		04E56FC418F291B1001BB14E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		04E56FC818F291B1001BB14E /* InstagramCollageMaker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InstagramCollageMaker-Info.plist"; sourceTree = "<group>"; };
-		04E56FCA18F291B1001BB14E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04E56FCC18F291B1001BB14E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04E56FCE18F291B1001BB14E /* InstagramCollageMaker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InstagramCollageMaker-Prefix.pch"; sourceTree = "<group>"; };
-		04E56FD318F291B1001BB14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		04E56FDB18F291B1001BB14E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		04E56FE118F291B1001BB14E /* InstagramCollageMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramCollageMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E56FE218F291B1001BB14E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		04E56FEA18F291B1001BB14E /* InstagramCollageMakerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InstagramCollageMakerTests-Info.plist"; sourceTree = "<group>"; };
-		04E56FEC18F291B1001BB14E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04E56FEE18F291B1001BB14E /* InstagramCollageMakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramCollageMakerTests.m; sourceTree = "<group>"; };
 		04E56FFA18F293E6001BB14E /* ICMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMAppDelegate.h; sourceTree = "<group>"; };
 		04E56FFB18F293E6001BB14E /* ICMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMAppDelegate.m; sourceTree = "<group>"; };
@@ -102,6 +99,17 @@
 		04E5701118F397F5001BB14E /* ICMImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMImage.m; sourceTree = "<group>"; };
 		40ED091D347BF3FED4392993 /* Pods.staticanalize.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.staticanalize.xcconfig; path = "Pods/Target Support Files/Pods/Pods.staticanalize.xcconfig"; sourceTree = "<group>"; };
 		5246DF0D708F15C893EF8046 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		640F80491B61953F00C0CD06 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		640F804A1B61953F00C0CD06 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		640F804B1B61953F00C0CD06 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = es; path = es.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		640F80501B61973B00C0CD06 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		640F80521B61973D00C0CD06 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		640F80531B61973D00C0CD06 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		640F80541B6197D700C0CD06 /* pt */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = pt; path = pt.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		640F80561B6197D700C0CD06 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		640F80571B6197D700C0CD06 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		64FAAF6F1B616DB100114089 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		64FAAF7C1B61907500114089 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6FB3B6262DEDC173562666FA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F4D0AD16C77C447699ACEAB6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -248,9 +256,9 @@
 			isa = PBXGroup;
 			children = (
 				04E56FC818F291B1001BB14E /* InstagramCollageMaker-Info.plist */,
-				04E56FC918F291B1001BB14E /* InfoPlist.strings */,
 				04E56FCC18F291B1001BB14E /* main.m */,
 				04E56FCE18F291B1001BB14E /* InstagramCollageMaker-Prefix.pch */,
+				640F80511B61973B00C0CD06 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -402,8 +410,11 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ru,
+				en,
+				es,
+				pt,
 			);
 			mainGroup = 04E56FB418F291B1001BB14E;
 			productRefGroup = 04E56FBE18F291B1001BB14E /* Products */;
@@ -422,10 +433,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E56FDC18F291B1001BB14E /* Images.xcassets in Resources */,
+				640F804F1B61973B00C0CD06 /* Localizable.strings in Resources */,
 				04E56FD418F291B1001BB14E /* Main_iPhone.storyboard in Resources */,
 				04B812F01A24929C000B454B /* Splash.xib in Resources */,
 				0413F80318F4EB64005CBA58 /* Collages.plist in Resources */,
-				04E56FCB18F291B1001BB14E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,18 +527,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		04E56FC918F291B1001BB14E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04E56FCA18F291B1001BB14E /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		04E56FD218F291B1001BB14E /* Main_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				04E56FD318F291B1001BB14E /* Base */,
+				640F80491B61953F00C0CD06 /* ru */,
+				640F804A1B61953F00C0CD06 /* en */,
+				640F804B1B61953F00C0CD06 /* es */,
+				640F80541B6197D700C0CD06 /* pt */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -535,9 +541,22 @@
 		04E56FEB18F291B1001BB14E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				04E56FEC18F291B1001BB14E /* en */,
+				64FAAF6F1B616DB100114089 /* ru */,
+				64FAAF7C1B61907500114089 /* es */,
+				640F80571B6197D700C0CD06 /* pt */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		640F80511B61973B00C0CD06 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				640F80501B61973B00C0CD06 /* en */,
+				640F80521B61973D00C0CD06 /* ru */,
+				640F80531B61973D00C0CD06 /* es */,
+				640F80561B6197D700C0CD06 /* pt */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

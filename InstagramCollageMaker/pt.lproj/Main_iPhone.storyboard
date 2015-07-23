@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vgl-SU-Amo">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="5ov-8P-IVw">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="vgl-SU-Amo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lTh-4M-gJA">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0078431377187371254" green="0.0078431377187371254" blue="0.0078431377187371254" alpha="1" colorSpace="deviceRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Erf-6Y-W9g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZW8-OT-wJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-256" y="49"/>
+        </scene>
+        <!--Criando collage-->
+        <scene sceneID="RL5-tA-aNd">
+            <objects>
+                <viewController storyboardIdentifier="ICMCollageViewController" id="Rky-qp-yce" customClass="ICMCollageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aCV-WU-aAM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.078431375324726105" green="0.086274512112140656" blue="0.098039224743843079" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Criando collage" id="emY-Qj-0lw">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Pré-visualizar" id="kVq-OD-Jz6">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onDoneButtonTap:" destination="Rky-qp-yce" id="abS-X3-OEz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cvg-kd-76V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-256" y="904"/>
+        </scene>
+        <!--Menu View Cotrnoller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ICMMenuViewCotrnoller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BAq-Vb-03I">
+                                <rect key="frame" x="38" y="457" width="244" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25490197539329529" green="0.25882354378700256" blue="0.25882354378700256" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Fazer collage">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.47999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onGiveCollageButtonTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xKS-Ff-2Hc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I8h-Ys-DQf">
+                                <rect key="frame" x="38" y="91" width="244" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25490197539329529" green="0.25882354378700256" blue="0.25882354378700256" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Insira nome de usuário">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.47999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BJf-q1-wbf" kind="modal" identifier="presentUserSearchNC" id="1X9-4V-goB"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" id="5rh-DM-o4r" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="208" width="320" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="56i-6J-bph"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="pzf-Lr-1jK"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Escolher formato de collage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FT5-ni-5f5">
+                                <rect key="frame" x="37" y="156" width="246" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.078431375324726105" green="0.086274512112140656" blue="0.098039224743843079" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GVP-sk-A8x"/>
+                    <connections>
+                        <outlet property="collagePreviewCarousel" destination="5rh-DM-o4r" id="Lrh-I7-JpF"/>
+                        <outlet property="giveCollageButton" destination="BAq-Vb-03I" id="lRE-Ck-s1a"/>
+                        <outlet property="nameButton" destination="I8h-Ys-DQf" id="E3q-7y-qrU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="228" y="203"/>
+        </scene>
+        <!--Nome de usuário-->
+        <scene sceneID="vTK-fo-4ns">
+            <objects>
+                <tableViewController id="15G-9R-4ZR" customClass="ICMUserSearchViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KgJ-2e-WtM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.078431375324726105" green="0.086274512112140656" blue="0.098039224743843079" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.078431375324726105" green="0.086274512112140656" blue="0.098039224743843079" alpha="1" colorSpace="deviceRGB"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="zSD-Tp-BYO">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.078431375324726105" green="0.086274512112140656" blue="0.098039224743843079" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="barTintColor" red="0.0078431377190000002" green="0.0078431377190000002" blue="0.0078431377190000002" alpha="1" colorSpace="deviceRGB"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="15G-9R-4ZR" id="Qsk-ap-c12"/>
+                            </connections>
+                        </searchBar>
+                        <connections>
+                            <outlet property="dataSource" destination="15G-9R-4ZR" id="k9F-at-bCF"/>
+                            <outlet property="delegate" destination="15G-9R-4ZR" id="sAW-Vi-lTt"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Nome de usuário" id="lGJ-VR-aGM">
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="bbY-oX-Ivo">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onCancelButtonTap:" destination="15G-9R-4ZR" id="ceV-o6-4Pa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="zIC-4i-Psb" id="wNN-aT-OsO"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zWt-hK-BFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="zIC-4i-Psb">
+                    <connections>
+                        <outlet property="delegate" destination="15G-9R-4ZR" id="Ewx-x4-rOT"/>
+                        <outlet property="searchBar" destination="zSD-Tp-BYO" id="LHO-BQ-59t"/>
+                        <outlet property="searchContentsController" destination="15G-9R-4ZR" id="hAU-Vx-dlD"/>
+                        <outlet property="searchResultsDataSource" destination="15G-9R-4ZR" id="Voy-do-KLB"/>
+                        <outlet property="searchResultsDelegate" destination="15G-9R-4ZR" id="Ac5-xs-Dlr"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1071" y="49"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="p6V-hM-mAF">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="BJf-q1-wbf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ZH-3R-ToR">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.078431375324726105" green="0.086274512112140656" blue="0.098039224743843079" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="barTintColor" red="0.0078431377187371254" green="0.0078431377187371254" blue="0.0078431377187371254" alpha="1" colorSpace="deviceRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="15G-9R-4ZR" kind="relationship" relationship="rootViewController" id="7F5-uG-gf3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rer-27-GTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="671" y="49"/>
+        </scene>
+        <!--Pré-visualização-->
+        <scene sceneID="uVo-qP-Nbn">
+            <objects>
+                <viewController storyboardIdentifier="ICMPreviewViewController" id="ybk-It-Swl" customClass="ICMPreviewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vU3-9I-leA">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="sRt-4z-fFk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.078431375324726105" green="0.086274512112140656" blue="0.098039224743843079" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Pré-visualização" id="h2b-eE-bP7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="reply" id="9ka-On-9XC"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="previewView" destination="sRt-4z-fFk" id="YEZ-FQ-C9g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0dv-c3-o6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="671" y="790"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

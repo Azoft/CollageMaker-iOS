@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  InstagramCollageMaker
+
+  Created by Raphael on 7/23/15.
+  Copyright (c) 2015 Azoft. All rights reserved.
+*/
+
+"search" = "Поиск";
+
+"choose a picture" = "Выберите картинку";
+
+"error loading image" = "Не удалось загрузить фото";
+
+"checking access" = "Проверка доступа";
+
+"the selected user has restricted access to your photos" = "Выбранный пользователь закрыл доступ к своим фотографиям";
+
+"loading photo list" = "Загрузка списка фотографий";
+
+"the selected user photo list is empty" = "У выбранного пользователя список фотографий пуст";
+
+"preview" = "Превью";
+
+ "at the moment, not sent, please check your email settings" = "В данный момент отправка невозможна, пожалуйста, проверьте настройки email";
+
+"failed to send email" = "Не удалось отправить email";

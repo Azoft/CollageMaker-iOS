@@ -29,7 +29,7 @@
 }
 
 - (void)setTitle:(NSString *)title {
-    [super setTitle:@"Выберите картинку"];
+    [super setTitle:NSLocalizedString(@"choose a picture",nil)];
 }
 
 @end
@@ -146,7 +146,7 @@
             }]];
             self.navigationItem.rightBarButtonItem.enabled = [self.collage.relativeFrames count] == [images count];
         } else {
-            [SVProgressHUD showErrorWithStatus:@"Не удалось загрузить фото"];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"error loading image" , nil)];
         }
     }];
 }

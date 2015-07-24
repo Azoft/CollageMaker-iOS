@@ -33,7 +33,7 @@
     
     self.searchResults = [NSMutableDictionary new];
     
-    self.searchDisplayController.searchBar.placeholder = @"Поиск";
+    self.searchDisplayController.searchBar.placeholder = NSLocalizedString(@"search", nil);//@"Поиск";
     self.searchDisplayController.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
     self.searchDisplayController.searchResultsTableView.backgroundColor = self.tableView.backgroundColor;
 }
@@ -150,7 +150,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.completion) {
-        [SVProgressHUD showWithStatus:@"Проверка доступа" maskType:SVProgressHUDMaskTypeGradient];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"checking access", nil) maskType:SVProgressHUDMaskTypeGradient];
         __weak ICMUser *user = ICMUSER(indexPath);
         [user checkUserPermissionsWithCompletion:^(BOOL userIsAviable, NSError *error) {
             if (userIsAviable) {
@@ -160,7 +160,7 @@
                 }
                 [self dismissViewControllerAnimated:YES completion:nil];
             } else {
-                [SVProgressHUD showErrorWithStatus:@"Выбранный пользователь закрыл доступ к своим фотографиям"];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"the selected user has restricted access to your photos", nil)];
             }
         }];
     }

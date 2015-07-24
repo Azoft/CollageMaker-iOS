@@ -87,11 +87,11 @@
 - (IBAction)onGiveCollageButtonTap:(UIButton *)sender {
     __weak __typeof(self) this = self;
 
-    [SVProgressHUD showWithStatus:@"Загрузка списка фотографий" maskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"loading photo list", nil) maskType:SVProgressHUDMaskTypeGradient];
     
     [self.selectedUser requesTopPhotosWithCompletion:^(NSArray *mediaObjects, NSError *error) {
         if ([mediaObjects count] == 0 || error) {
-            [SVProgressHUD showErrorWithStatus:error ? [error localizedDescription] : @"У выбранного пользователя список фотографий пуст"];
+            [SVProgressHUD showErrorWithStatus:error ? [error localizedDescription] : NSLocalizedString(@"the selected user photo list is empty", nil)];
         } else {
             [SVProgressHUD dismiss];
             
